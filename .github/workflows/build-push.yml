@@ -14,6 +14,12 @@ jobs:
       packages: write
 
     steps:
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc /usr/local/.ghcup /usr/local/share/boost
+          sudo docker image prune -af
+          df -h
+
       - uses: actions/checkout@v4
 
       - name: Login to GHCR
