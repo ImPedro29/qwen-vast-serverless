@@ -34,6 +34,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Lowercase owner
+        id: owner
+        run: echo "lc=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -41,6 +45,8 @@ jobs:
           file: ./Dockerfile.vast
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/impedro29/qwen-vast-sglang:latest
+          tags: |
+            ghcr.io/${{ steps.owner.outputs.lc }}/qwen-vast-serverless:latest
+            ghcr.io/${{ steps.owner.outputs.lc }}/qwen-vast-serverless:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
