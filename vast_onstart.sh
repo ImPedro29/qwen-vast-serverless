@@ -8,7 +8,7 @@ export REPORT_ADDR="${REPORT_ADDR:-https://run.vast.ai}"
 export MODEL_LOG="/var/log/sglang.log"
 export PYWORKER_REPO="${PYWORKER_REPO:-https://github.com/ImPedro29/qwen-vast-serverless}"
 export MODEL_NAME="${MODEL_NAME:-qwen3.6-27b}"
-export HF_REPO="${HF_REPO:-sakamakismile/Qwen3.6-27B-Text-NVFP4-MTP}"
+export HF_REPO="${HF_REPO:-AEON-7/Qwen3.6-27B-AEON-Ultimate-Uncensored-Multimodal-NVFP4-MTP}"
 
 # --- Baixar modelo (idempotente) ---
 pip install hf-transfer huggingface_hub -q --upgrade
