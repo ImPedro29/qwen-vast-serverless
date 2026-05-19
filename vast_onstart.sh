@@ -8,8 +8,6 @@ export MODEL_LOG="/var/log/sglang.log"
 export PYWORKER_REPO="${PYWORKER_REPO:-https://github.com/verbeux-ai/qwen-vast-serverless}"
 export HF_HUB_ENABLE_HF_TRANSFER=1
 
-pip install hf-transfer -q --upgrade
-
 # --- SGLang em background ---
 mkdir -p /var/log
 echo "Iniciando SGLang -> $MODEL_LOG"
@@ -20,7 +18,7 @@ nohup python3 -m sglang.launch_server \
     --host 0.0.0.0 \
     --port 30000 \
     --context-length 262144 \
-    --mem-fraction-static 0.85 \
+    --mem-fraction-static 0.80 \
     --chunked-prefill-size 2096 \
     --max-running-requests 12 \
     --quantization compressed-tensors \
@@ -33,8 +31,6 @@ nohup python3 -m sglang.launch_server \
     --speculative-num-draft-tokens 4 \
     --mamba-scheduler-strategy extra_buffer \
     --attention-backend flashinfer \
-    --enable-metrics \
-    --enable-cache-report \
     --trust-remote-code \
     > "$MODEL_LOG" 2>&1 &
 

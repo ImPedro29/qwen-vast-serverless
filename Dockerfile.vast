@@ -1,4 +1,6 @@
 FROM lmsysorg/sglang:latest
 
+RUN pip install --no-cache-dir hf-transfer --upgrade
+
 RUN printf '#!/bin/bash\nwget -qO /tmp/onstart.sh "$ONSTART_PATH" && bash /tmp/onstart.sh\n' \
     > /usr/local/bin/onstart_wget.sh && chmod +x /usr/local/bin/onstart_wget.sh
