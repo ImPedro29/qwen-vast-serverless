@@ -5,12 +5,12 @@ import nltk
 from vastai import Worker, WorkerConfig, HandlerConfig, LogActionConfig, BenchmarkConfig
 
 MODEL_SERVER_URL = "http://127.0.0.1"
-MODEL_SERVER_PORT = 8000
-MODEL_LOG_FILE = "/var/log/vllm.log"
+MODEL_SERVER_PORT = 30000
+MODEL_LOG_FILE = "/var/log/sglang.log"
 MODEL_HEALTHCHECK_ENDPOINT = "/health"
 
 MODEL_LOAD_LOG_MSG = [
-    "Application startup complete.",
+    "The server is fired up and ready to roll!",
 ]
 
 MODEL_ERROR_LOG_MSGS = [
