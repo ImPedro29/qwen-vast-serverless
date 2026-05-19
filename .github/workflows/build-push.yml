@@ -39,6 +39,18 @@ jobs:
         id: owner
         run: echo "lc=$(echo ${{ github.repository_owner }} | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
+      - name: Build and push (SGLang)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile.vast
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/${{ steps.owner.outputs.lc }}/qwen-vast-sglang:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: Build and push (vLLM)
         uses: docker/build-push-action@v5
         with:
