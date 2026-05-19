@@ -13,20 +13,8 @@ mkdir -p /var/log
 echo "Iniciando SGLang -> $MODEL_LOG"
 nohup python3 -m sglang.launch_server \
     --model-path AEON-7/Qwen3.6-27B-AEON-Ultimate-Uncensored-Multimodal-NVFP4-MTP \
-    --served-model-name "${MODEL_NAME:-qwen3.6-27b}" \
-    --tp-size 1 \
     --host 0.0.0.0 \
     --port 30000 \
-    --context-length 262144 \
-    --mem-fraction-static 0.80 \
-    --chunked-prefill-size 2096 \
-    --max-running-requests 12 \
-    --kv-cache-dtype fp8_e4m3 \
-    --reasoning-parser qwen3 \
-    --tool-call-parser qwen3_coder \
-    --mamba-scheduler-strategy extra_buffer \
-    --attention-backend flashinfer \
-    --enable-metrics \
     --trust-remote-code \
     > "$MODEL_LOG" 2>&1 &
 
