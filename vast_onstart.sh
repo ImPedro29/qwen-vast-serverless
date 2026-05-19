@@ -21,6 +21,7 @@ nohup python3 -m sglang.launch_server \
     --mem-fraction-static 0.80 \
     --chunked-prefill-size 2096 \
     --max-running-requests 12 \
+    --kv-cache-dtype fp8_e4m3 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_coder \
     --attention-backend flashinfer \
