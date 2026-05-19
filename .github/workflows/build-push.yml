@@ -47,7 +47,7 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/${{ steps.owner.outputs.lc }}/qwen-vast-sglang:latest
+            ghcr.io/${{ steps.owner.outputs.lc }}/qwen-sglang-serverless:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
