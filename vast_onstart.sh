@@ -12,7 +12,7 @@ export HF_HUB_ENABLE_HF_TRANSFER=1
 mkdir -p /var/log
 echo "Iniciando SGLang -> $MODEL_LOG"
 nohup python3 -m sglang.launch_server \
-    --model-path unsloth/Qwen3.6-27B-NVFP4 \
+    --model-path AEON-7/Qwen3.6-27B-AEON-Ultimate-Uncensored-Multimodal-NVFP4-MTP \
     --served-model-name "${MODEL_NAME:-qwen3.6-27b}" \
     --tp-size 1 \
     --host 0.0.0.0 \
@@ -21,7 +21,7 @@ nohup python3 -m sglang.launch_server \
     --mem-fraction-static 0.80 \
     --chunked-prefill-size 2096 \
     --max-running-requests 12 \
-    --quantization compressed-tensors \
+    --quantization modelopt \
     --kv-cache-dtype fp8_e4m3 \
     --reasoning-parser qwen3 \
     --tool-call-parser qwen3_coder \
